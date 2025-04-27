@@ -6,7 +6,7 @@ import solidJs from '@astrojs/solid-js';
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-  site: 'https://doubleprecision.ai',
+  site: 'https://doubleprecision.github.io',
   integrations: [mdx(), sitemap(), solidJs()],
 
   vite: {
