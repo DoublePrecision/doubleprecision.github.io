@@ -12,6 +12,15 @@
     "@astrojs/mdx": "^4.2.5",
     "@astrojs/rss": "^4.0.11",
     "@astrojs/sitemap": "^3.3.1",
-    "astro": "^5.7.5"
+    "@astrojs/solid-js": "^5.0.9",
+    "@fortawesome/fontawesome-svg-core": "^6.7.2",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@tailwindcss/vite": "^4.1.4",
+    "animate.css": "^4.1.1",
+    "astro": "^5.7.5",
+    "daisyui": "^5.0.28",
+    "solid-js": "^1.9.5",
+    "tailwindcss": "^4.1.4",
+    "webgl-fluid-enhanced": "^0.8.0"
   }
 }

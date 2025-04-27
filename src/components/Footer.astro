@@ -2,9 +2,9 @@
 const today = new Date();
 ---
 
-<footer>
-	&copy; {today.getFullYear()} Your name here. All rights reserved.
-	<div class="social-links">
+<footer class="fixed bottom-0 min-w-screen pb-5 ">
+	&copy; doubleprecision.ai.  {today.getFullYear()} All rights reserved.
+	<!-- <div class="social-links">
 		<a href="https://m.webtoo.ls/@astro" target="_blank">
 			<span class="sr-only">Follow Astro on Mastodon</span>
 			<svg
@@ -37,12 +37,10 @@ const today = new Date();
 				></path></svg
 			>
 		</a>
-	</div>
+	</div> -->
 </footer>
 <style>
 	footer {
-		padding: 2em 1em 6em 1em;
-		background: linear-gradient(var(--gray-gradient)) no-repeat;
 		color: rgb(var(--gray));
 		text-align: center;
 	}
