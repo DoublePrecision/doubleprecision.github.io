@@ -8,7 +8,6 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   site: 'https://doubleprecision.github.io',
   integrations: [mdx(), sitemap(), solidJs()],
-
   vite: {
     plugins: [tailwindcss()],
   },

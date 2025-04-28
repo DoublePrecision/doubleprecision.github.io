@@ -21,19 +21,19 @@ import 'animate.css';
 	</head>
 	<body>
 		<Header />
-		<div class="min-h-screen flex flex-col items-center justify-center p-4">
-			<div class="text-center max-w-[40%]">
-				<p class="text-5xl font-semibold mb-4 animate__animated animate__fadeIn">
+		<div class="min-h-screen flex flex-col items-center justify-center p-4 bg-linear-to-b from-violet-600/10 via-transparent">
+			<div class="text-center lg:max-w-[40%] max-w-[90%] lg:pt-0 pt-[5em] pb-[3em]">
+				<p class="text-4xl sm:text-5xl md:text-6xl lg:text-[5em] font-semibold mb-4 animate__animated animate__fadeIn text-white">
 					Who We Are
 				</p>
-				<p class="text-3xl mb-12 animate__animated animate__fadeIn">
+				<p class="text-lg lg:text-[2em] mb-12 animate__animated animate__fadeIn text-white">
 					We are <span class="font-semibold">doubleprecision.ai</span
 					>, a software engineering company specialising in bespoke
 					AI/ML solutions. Based right out of Singapore, we engineer
 					robust systems without taking shortcuts, ensuring every
 					product meets the high standards we set for ourselves.
 				</p>
-				<p class="text-5xl font-semibold mb-4 animate__animated animate__fadeIn">
+				<p class="text-4xl sm:text-5xl md:text-6xl lg:text-[5em] font-semibold mb-4 animate__animated animate__fadeIn text-white">
 					Our Tech Stack
 				</p>
 				<div class="flex flex-wrap justify-center gap-4 animate__animated animate__fadeIn">
@@ -51,3 +51,6 @@ import 'animate.css';
 		<Footer />
 	</body>
 </html>
+<script>
+	import "preline/dist/preline.js";
+</script>

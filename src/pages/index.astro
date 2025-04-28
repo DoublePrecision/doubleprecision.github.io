@@ -4,7 +4,7 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import "../styles/global.css";
-import 'animate.css';
+import "animate.css";
 ---
 
 <!doctype html>
@@ -13,55 +13,107 @@ import 'animate.css';
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
-		<Header />
-		<div class="hero min-h-screen">
-			<div class="hero-overlay" id="landing-bg"></div>
-			<div class="hero-content text-neutral-content text-center">
-				<div>
-					<h1 class="mb-5 text-[5em]/20 font-bold animate__animated animate__fadeInUp">Architecting Intelligence. Transforming Business.</h1>
-					<p class="mb-5 text-[2em] text-gray-400 animate__animated animate__fadeInUp">
-						Gain your edge with AI/ML built on rigorous engineering, not shortcuts.
-					</p>
-					<button class="btn btn-neutral text-semibold pt-3 pb-3 pl-10 pr-10 text-lg border-primary bg-transparent hover:bg-primary animate__animated animate__fadeInUp">Get in Touch</button>
-				</div>
+		<!-- We'll use a wrapper div to maintain the fixed background -->
+		<div id="background-wrapper" class="fixed inset-0 w-full h-full overflow-hidden z-0">
+			<div id="landing-bg" class="w-full h-full">
+				<!-- Fluid simulation canvas will be created here -->
 			</div>
 		</div>
-		<Footer />
+		
+		<div class="relative z-10 min-h-screen flex flex-col pointer-events-none">
+			<Header />
+			
+			<main class="flex-grow flex flex-col items-center justify-center">
+				<div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-24 space-y-8">
+					<div class="max-w-4xl text-center mx-auto animate__animated animate__fadeInUp">
+						<h1 class="block font-bold text-gray-200 text-4xl sm:text-5xl md:text-6xl lg:text-[5em]">
+							Architecting Intelligence. Transforming Business.
+						</h1>
+					</div>
+
+					<div class="max-w-3xl text-center mx-auto animate__animated animate__fadeInUp">
+						<p class="text-lg lg:text-[2em] text-gray-400">
+							Gain your edge with AI/ML built on rigorous
+							engineering, <strong>not shortcuts.</strong>
+						</p>
+					</div>
+					<div class="text-center animate__animated animate__fadeInUp cursor-pointer z-10 pointer-events-auto">
+						<a
+							class="inline-flex justify-center items-center gap-x-3 text-center bg-gradient-to-tl from-blue-600 to-violet-600 shadow-lg shadow-transparent hover:shadow-blue-700/50 border border-transparent text-white text-sm font-medium focus:outline-none focus:shadow-blue-700/50 py-3 px-6"
+							href="mailto:sales@doubleprecision.ai"
+						>
+							Get in Touch
+							<svg
+								class="shrink-0 w-4 h-4"
+								xmlns="http://www.w3.org/2000/svg"
+								width="24"
+								height="24"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							>
+								<path d="m9 18 6-6-6-6"></path>
+							</svg>
+						</a>
+					</div>
+				</div>
+			</main>
+			
+			<Footer />
+		</div>
 	</body>
 </html>
-<script>
-	import WebGLFluidEnhanced from "webgl-fluid-enhanced";
-	const container = document.getElementById("landing-bg");
 
-	if (container) {
-		const simulation = new WebGLFluidEnhanced(container);
-
-		simulation.setConfig({
-			colorPalette: [
-				"#7400B8",
-				"#6930C3",
-				"#5E60CE",
-				"#5390D9",
-				"#4EA8DE",
-				"#48BFE3",
-				"#56CFE1",
-				"#64DFDF",
-				"#72EFDD",
-				"#80FFDB",
-			],
-			backgroundColor: "#020202",
-			densityDissipation: 3,
-			colorUpdateSpeed: 5,
-			hover: true,
-			brightness: 0.3,
-			velocityDissipation: 0.3,
-			bloom: false,
-		});
-		
-		simulation.start();
-		simulation.multipleSplats(50);
-		window.addEventListener("beforeunload", () => {
-			simulation.stop();
-		});
+<style>
+	html, body {
+		background-color: #020202;
+		overflow-x: hidden;
 	}
+</style>
+
+<script>
+	import "preline/dist/preline.js";
+	import WebGLFluidEnhanced from "webgl-fluid-enhanced";
+	
+	// Wait for the DOM to be fully loaded
+	document.addEventListener("DOMContentLoaded", () => {
+		const container = document.getElementById("landing-bg");
+
+		if (container) {
+			const simulation = new WebGLFluidEnhanced(container);
+
+			simulation.setConfig({
+				colorPalette: [
+					"#7400B8",
+					"#6930C3",
+					"#5E60CE",
+					"#5390D9",
+					"#4EA8DE",
+					"#48BFE3",
+					"#56CFE1",
+					"#64DFDF",
+					"#72EFDD",
+					"#80FFDB",
+				],
+				backgroundColor: "#020202",
+				densityDissipation: 3,
+				colorUpdateSpeed: 5,
+				hover: true,
+				brightness: 0.3,
+				velocityDissipation: 0.3,
+				bloom: false,
+			});
+
+			simulation.start();
+			simulation.multipleSplats(50);
+			
+			// Clean up the simulation when leaving the page
+			window.addEventListener("beforeunload", () => {
+				simulation.stop();
+			});
+		}
+	});
 </script>
